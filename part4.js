@@ -2,7 +2,7 @@ var columna;
 let matrix = [];
 // Obtenemos la referencia del elemento body
 var body = document.getElementsByTagName("body")[0];
-body.style.backgroundColor = "#dfdf23";
+body.style.backgroundColor = "rgb(86 100 120)";
 
 function CreaTaula() {
 
@@ -25,9 +25,11 @@ for (var i = 0; i < y; i++) {
     columna.textContent = ' ';
     //ESTILIZAR LA TABLA
     columna.style.border = "2px solid";
-    columna.style.color = "grey";
+    columna.style.color = "#ffdc08de";
+    columna.style.backgroundColor = "green";
     columna.style.width = "80px";
     columna.style.height = "50px";
+  
     columna.setAttribute("id",  j + " " + i);
 
     fila.appendChild(columna);
@@ -42,8 +44,10 @@ tabla.appendChild(tblBody);
  body.appendChild(tabla);
  
  //estilos
- tblBody.style.backgroundColor = "grey";
- tabla.style.marginLeft = "520px";
+// tblBody.style.backgroundColor = "grey";
+ tabla.style.marginLeft = "auto";       
+ tabla.style.marginRight = "auto";
+ 
 
 
  let rows = document.querySelector("tbody").children
@@ -56,6 +60,8 @@ tabla.appendChild(tblBody);
         //añadimos click en las celdas para que reconozca donde se la clicado
         //despues añadimos la funcion coordenadas donde obtendremos las coordenadas
         tblBody.addEventListener("click", coordenadas);
+        tblBody.addEventListener("click", paintAllNeighbours);
+        
         /////////////////////
 
 }
@@ -97,21 +103,15 @@ function inicialitzaMines() {
 
      for (let a = 0; a < X; a++) {
             for (let b = 0; b < Y; b++) {
-                if (mina[a][b] == 1) {
-                    matrix[a][b].style.backgroundColor = "red";
-                }
+                 if (mina[a][b] == 1 ) {
+                     matrix[a][b].style.backgroundColor = "red";
+                 } 
             }
         }
-
+        
 }
 
-// function cordenadas(event) {
-//    if (tecla premuda == true) {
-//         return id; 
-//    }
 
-
-// }
 //funcion que devuelve las coordenadas
 function coordenadas(event) {
     //split para determinar lo que separa los elementos
@@ -124,11 +124,57 @@ function coordenadas(event) {
     }
 
     if (mina[x][y] == 1) {
-        return alert("¡¡¡¡¡BOOOOM!!!!!");
+         alert("¡¡¡¡¡BOOOOM!!!!!");
+        //mina[x][y].style.backgroundColor = "red";
     }
     else {
         return console.log("No hay mina");
     }
 }
 
+//funcion contar vecinos
+function countNeighbours(x,y) {
+ 
+    let count = 0;
+  
+    for (let i = y-1; i<= y+1; i++ ) {
+        for (let j = x-1; j<= x+1; j++) {
+            try {
+                if(i==x && j==y){
 
+                }
+            else if (matrix[i][j].style.backgroundColor == "red") {
+                count++;
+            }
+            } catch {
+
+            }
+        }
+    }
+            
+     return count; 
+}
+
+
+
+
+//pintar todos los vecinos 
+function paintAllNeighbours(event) {
+    let x = parseInt(event.target.id.split(' ')[0]);
+    let y = parseInt(event.target.id.split(' ')[1]);
+    for (let i = x-1; i<= x+1; i++ ) {
+        for (let j = y-1; j<= y+1; j++) {
+            count = countNeighbours(i,j); 
+            matrix[j][i].innerText = count;
+            matrix[j][i].style.backgroundColor = "blue";
+            
+        }
+    }
+       
+}
+
+
+////////////////////////////////////////////
+
+
+////////////////////////////////////////////
