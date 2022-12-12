@@ -4,23 +4,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- es el cdn de los estilos de bomba y bandera -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <title>Document</title>
 </head>
 <body>
-     <!-- <button type="button" onclick="CreaTaulell()"></button>  -->
+ 
 
-    <button type="button" onclick="CreaTaula()">PUSH</button> 
+
+<!-- CREAR TABLA -->
+    <!-- <button type="button" onclick="CreaTaula()" style="background-color: rgb(91, 186, 91);">CREAR TABLA</button>  -->
+   
+   
+   
+   
+   
     <!-- <button type="button" onclick="paintAll()">paintAll</button>
     <button type="button" onclick="paintCheckerboard()">paintCheckerboard</button> -->
         <!-- <button type="button" onclick="matriuBinaria(matrix)">matriuBinaria</button>
         -->
-
-
-    <button type="button" onclick="inicialitzaMines()">inicialitzaMines</button>
-    <!-- <button type="button" onclick="paintAllNeighbours()">pintarVECINOS</button> -->
+<!-- 
+    <li style="border: 2px solid; color: black; ">
+    <i class="fa-solid fa-bomb" style="color: black; margin-left: 50%; margin-right: 50%; height: 100px; "></i>
+    </li> -->
     
-
     
+    
+<!-- INICIALIZAR MINAS -->
+    <!-- <button type="button" onclick="inicialitzaMines()">inicialitzaMines</button> -->
+    
+    
+    
+    
+    
+    <!--  <button type="button" onclick="juegosperdido()">alerta Juego Perdido</button>  -->
+    <button type="button" id="refresh" style="background-color: rgb(236, 166, 69);">REINICIAR JUEGO</button>  
+    <button type="button" onclick="iniciarJuego()" style="background-color: rgb(91, 186, 91);">INICIAR JUEGO</button>
+    <button type="button" onclick="pararJuego()" style="background-color: rgb(227, 10, 10);">PARAR JUEGO</button> 
+
+    <div style="display: grid; grid-template-columns: 5rem 5rem 5rem 5rem; margin-left: 24%; margin-top: -25px;">
+   
+    <div style="color: black; margin-left: 42%; margin-right: 60%; border-radius: 10px; margin-top: 10px;">TIMER</div>
+    <div id="reloj" style="border: 2px solid; background-color: white; font-size:30px; color: black; width: 80%; height: 30px; border-radius: 10px; margin-left: 7%;" ></div>
+    
+    
+    <div style="color: black; border-radius: 10px; margin-top: 8px;">PUNTUACIÓN</div>
+
+
+    <div id="cuadroPUNTUACION" style="border: 2px solid; background-color: white; font-size:30px; color: black; width: 80%; height: 30px; border-radius: 10px; margin-left: 35%;"></div>
+    
+    </div>
 
     <input type="number" id="X">
     <input type="number" id="Y"> 
@@ -35,8 +68,10 @@
   
     
 </body>
-<script src="part4.js">
+
+<script src="part5.js">
     
 </script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </html>
